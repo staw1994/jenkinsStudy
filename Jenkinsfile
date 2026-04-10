@@ -1,18 +1,25 @@
 pipeline {
     agent any
 
+    /*
+    tools { 
+        maven 'Maven 3.9.5'
+        jdk 'JDK 17'
+    }
+    */
+    
     environment { 
         MAVEN_OPTS = '-Xmx1024m'
         APP_NAME = 'demo'
         APP_VERSION = '0.0.1-SNAPSHOT'
     }
-
+    /*
     options {
         buildDiscarder (logRorator(numToKeepStr: '10'))
         timestamps()
         timeout(time: 30, unit: 'MINUTES')
     }
-
+    */
     stages { 
         stage('Checkout') { 
             steps { 
@@ -52,6 +59,13 @@ pipeline {
             steps {
                 echo 'start application deploy'
             }
+            // deploy/upload new jar 
+            // check jar is exist
+            // remote deploy (ssh -T ${remoteHost})
+            ll stop old application
+            ll confirm old cpplication is stopped
+            ll start new application
+            ll verify new application is running (output error if any)
             post {
                 success {
                     echo 'Deploy success!'
