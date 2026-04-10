@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    tools { 
-    }
-
     environment { 
         MAVEN_OPTS = '-Xmx1024m'
         APP_NAME = 'demo'
