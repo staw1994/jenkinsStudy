@@ -57,13 +57,6 @@ pipeline {
             steps {
                 echo 'start application deploy'
             }
-            # deploy/upload new jar 
-            # check jar is exist
-            # remote deploy (ssh -T ${remoteHost})
-            # stop old application
-            # confirm old cpplication is stopped
-            # start new application
-            # verify new application is running (output error if any)
             post {
                 success {
                     echo 'Deploy success!'
