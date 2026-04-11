@@ -55,9 +55,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to production') {
             steps {
                 echo 'start application deploy'
+                input message: "確定要部署到正式環境嗎？", ok: "執行部署"
+                echo "正在部署..."
             }
             // deploy/upload new jar 
             // check jar is exist
