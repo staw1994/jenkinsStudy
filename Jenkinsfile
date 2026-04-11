@@ -21,11 +21,6 @@ pipeline {
     }
     */
 
-    options{
-        timeout(time: 5, unit: 'MINUTES'){
-             input message: "請在 5 分鐘內確認"
-        }
-    }
     stages { 
         stage('Checkout') { 
             steps { 
@@ -63,7 +58,9 @@ pipeline {
 
         stage('Deploy to production') {
             steps {
-                input message: "confirm to proceed (5 minutes expired)？", ok: "proceed"
+                timeout(time: 5, unit: 'MINUTES'){
+                    input message: "confirm to proceed (5 minutes expired)？", ok: "proceed"
+                }
                 echo 'start application deploy'
             }
             // deploy/upload new jar 
