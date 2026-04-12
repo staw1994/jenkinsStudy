@@ -90,6 +90,10 @@ pipeline {
         }
         failure{
             echo 'Pipeline failed!'
+            mail to: 'staw1994@gmail.com', subject: "Jenkins deploy failed: ${env.JOB_NAME}", body: "please check log at: ${env.BUILD_URL}"
+        }
+        aborted{
+            echo 'Pipeline aborted!'
         }
     }
 }
