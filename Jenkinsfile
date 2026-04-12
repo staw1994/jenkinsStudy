@@ -73,6 +73,7 @@ pipeline {
             post {
                 success {
                     echo 'Deploy success!'
+                    mail to: 'staw1994@gmail.com', subject: "Jenkins deploy success: ${env.JOB_NAME}", body: "please check log at: ${env.BUILD_URL}"
                 }
                 failure {
                     echo 'Deploy failured'
@@ -90,7 +91,7 @@ pipeline {
         }
         failure{
             echo 'Pipeline failed!'
-            mail to: 'staw1994@gmail.com', subject: "Jenkins deploy failed: ${env.JOB_NAME}", body: "please check log at: ${env.BUILD_URL}"
+            // mail to: 'staw1994@gmail.com', subject: "Jenkins deploy failed: ${env.JOB_NAME}", body: "please check log at: ${env.BUILD_URL}"
         }
         aborted{
             echo 'Pipeline aborted!'
